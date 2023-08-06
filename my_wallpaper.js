@@ -9,7 +9,8 @@ let wiskerColor = 100; // color of the wiskers
 let eyeColor = "#DAA520"; // color of the eyes
 let pupilColor = "black"; // color of the pupils
 let toungeColor = "#FF6699"; // color of the tounge
-let stripeColor = "black"; // color of the stripes
+let stripeColor = "red"; // color of the stripes
+let hasStripes = false; // if the cat has stripes or not
 let backgroundColor = "#FFC0CB" // color of the background
 
 // eye parameters
@@ -47,7 +48,7 @@ let neckYFill = 45; // y fill area for the neck
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(NINE_LANDSCAPE);
+  pWallpaper.resolution(A3);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
@@ -84,10 +85,12 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   arc(headXPos, headYPos + 20, 100, 90, 270 - topWidth, 270 + topWidth);
 
   // stripes
-  noStroke();
-  fill(stripeColor);
-  arc(headXPos - faceWidth/2 - 39, headYPos -10, stripeLength, stripeWidth, 290, 90);
-  arc(headXPos + faceWidth/2 + 28, headYPos +35, stripeLength/stripeScale, stripeWidth/stripeScale, 155, 270);
+  if (hasStripes){
+    noStroke();
+    fill(stripeColor);
+    arc(headXPos - faceWidth/2 - 39, headYPos -10, stripeLength, stripeWidth, 290, 90);
+    arc(headXPos + faceWidth/2 + 28, headYPos +35, stripeLength/stripeScale, stripeWidth/stripeScale, 155, 270);
+  }
 
   // tounge
   stroke(outLineColor);
